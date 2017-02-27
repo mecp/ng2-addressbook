@@ -1,37 +1,54 @@
-<div>
-  <h1 x-large class="sample-content">Your Content Here</h1>
+<div class="home-container home-layout-transparent">
+   <mdl-layout #mdlLayout1="mdlLayout" mdl-layout-fixed-header mdl-layout-header-seamed>
+      <mdl-layout-header mdl-layout-header-transparent>
+         <mdl-layout-header-row>
+            <!-- Search Box -->
+            <mdl-textfield
+                class="textbox searchbox"
+                type="text"
+                label="Search"
+                [(ngModel)]="searchText"
+                placeholder="Search by Name, Company or Tag..."
+                autofocus
+                (ngModelChange)="onTextChange($event)">
+            </mdl-textfield>
+            <button mdl-button #searchBtn="mdlButton" mdl-button-type="icon">
+                <mdl-icon class="icons">search</mdl-icon>
+            </button>
 
-  <hr>
-
-  <div>
-    For hot module reloading run
-    <pre>npm run start:hmr</pre>
-  </div>
-
-  <hr>
-
-  <div>
-    <h4>Local State</h4>
-
-    <form (ngSubmit)="submitState(localState.value)" autocomplete="off">
-
-      <input
-        [value]="localState.value"
-        (input)="localState.value = $event.target.value"
-        placeholder="Submit Local State to App State"
-        autofocus>
-
-      <button>Submit Value</button>
-    </form>
-    <!--
-        <input type="text" [value]="localState.value" (input)="localState.value = $event.target.value" autofocus>
-        Rather than wiring up two-way data-binding ourselves with [value] and (input)
-        we can use Angular's [(ngModel)] syntax
-        <input type="text" name="textInput" [(ngModel)]="localState.value" autofocus>
-      -->
-
-    <pre>this.localState = {{ localState | json }}</pre>
-
-  </div>
-
+            <mdl-layout-spacer></mdl-layout-spacer>
+            <!-- Notification Badge here -->
+            <button mdl-button #notifBtn="mdlButton" class="notification-icon" (click)="notifTray.toggle($event, notifBtn)" mdl-button-type="icon">
+                <mdl-icon class="icons" [hidden]="unreadNotificationCount() < 1" [mdl-badge]="unreadNotificationCount()" mdl-badge-overlap>notifications</mdl-icon>
+                <mdl-icon class="icons" [hidden]="unreadNotificationCount() > 0">notifications_none</mdl-icon>
+            </button>
+            <mdl-menu #notifTray="mdlMenu" mdl-menu-position="bottom-right">
+                <mdl-menu-item *ngFor="let notification of notifications.slice().reverse()" 
+                                    (click)="notification.read = true;" 
+                                    [class.unread]="!notification.read"
+                                    mdl-menu-item-full-bleed-divider>{{ notification.message }}</mdl-menu-item>
+                <mdl-menu-item [hidden]="notifications.length > 0" disabled>No Notifications</mdl-menu-item>
+            </mdl-menu>
+         </mdl-layout-header-row>
+      </mdl-layout-header>
+      <!-- Main content container -->
+      <mdl-layout-content (scroll)="onScroll($event)">
+        <div class="mdl-grid">
+            <div class="mdl-cell mdl-cell--6-col mdl-cell--9-col-tablet">
+                <contact-list [data]="matchedContacts" 
+                                (tagsTarget)="onTagsTargetChange($event)"
+                                 (contactSelect)="onContactSelected($event)"
+                                    [selected]="selectedContact"></contact-list>
+            </div>
+            <div class="mdl-cell mdl-cell--6-col mdl-cell--9-col-tablet">
+                <contact-info [contact]="selectedContact"></contact-info>
+            </div>
+        </div>
+      </mdl-layout-content>
+   </mdl-layout>
+   <tag-list #tagListComponent 
+                [target]="tagsTargetContact" 
+                (tagListClose)="onTagListClosed($event)" 
+                [tags]="data.tags" 
+                (tagsChange)="onTagsChange($event)"></tag-list>
 </div>

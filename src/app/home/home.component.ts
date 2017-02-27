@@ -1,43 +1,111 @@
-import {
-  Component,
-  OnInit
-} from '@angular/core';
+import { Component, Renderer, ViewEncapsulation, 
+          ViewChild, HostListener } from '@angular/core';
 
-import { AppState } from '../app.service';
-import { Title } from './title';
-import { XLargeDirective } from './x-large';
+import { ModelService } from '../shared/model.service';
+import { Contact } from '../shared/model/contact.model';
+import { TagService } from '../shared/tag.service'
+import { TagListComponent } from './tag-list.component'
+import { NotificationService } from '../shared/notification.service';
 
 @Component({
-  // The selector is what angular internally uses
-  // for `document.querySelectorAll(selector)` in our index.html
-  // where, in this case, selector is the string 'home'
-  selector: 'home',  // <home></home>
-  // We need to tell Angular's Dependency Injection which providers are in our app.
-  providers: [
-    Title
-  ],
-  // Our list of styles in our component. We may add more to compose many styles together
-  styleUrls: [ './home.component.css' ],
-  // Every Angular template is first compiled by the browser before Angular runs it's compiler
-  templateUrl: './home.component.html'
+  selector: 'home',
+  encapsulation: ViewEncapsulation.None,
+  styleUrls: ['./home.component.css'],
+  templateUrl: './home.component.html',
+  providers: [ TagService, NotificationService ]
 })
-export class HomeComponent implements OnInit {
-  // Set our default values
-  public localState = { value: '' };
-  // TypeScript public modifiers
-  constructor(
-    public appState: AppState,
-    public title: Title
-  ) {}
+export class HomeComponent {
+    public searchText;
+    public notifications = []
+    public data:any = {};
+    public matchedContacts: Contact[];
+    public tagsTargetButton: any;
+    public tagsTargetContact: Contact;
+    public selectedContact: Contact;
 
-  public ngOnInit() {
-    console.log('hello `Home` component');
-    // this.title.getData().subscribe(data => this.data = data);
-  }
+    @ViewChild('tagListComponent')
+    public tagListComponent: TagListComponent;
 
-  public submitState(value: string) {
-    console.log('submitState', value);
-    this.appState.set('value', value);
-    this.localState.value = '';
-  }
+    constructor(public model: ModelService, public tagService: TagService, public renderer: Renderer, public notificationService: NotificationService) {
+      this.notificationService.subscribe((notification) => {
+            if(this.notifications.length == 10){ //Show latest 10 notifications only
+              this.notifications.shift();
+            }
+            this.notifications.push({ message: notification.message, read: false});
+        });
+
+      this.model.get('/data.json').subscribe(data => {
+        this.data = data;
+        this.tagService.initialize(this.data.tags);
+      });
+    }
+
+    unreadNotificationCount(){
+      return this.notifications.filter(notice => notice.read == false).length;
+    }
+
+    @HostListener("window:resize", ["$event"])
+    onResize(event){
+      this.setTargetListPosition();
+    }
+
+    onScroll(event) {
+      this.tagsTargetContact = null;
+    }
+
+    searchContacts(text) {
+      this.matchedContacts = this.data.contacts.filter((contact) => {
+        let subParts = text.split(' ');
+        let matches = false;
+        subParts.forEach(part => {
+          let lPart = part.toLowerCase();
+          let ts = this.tagService;
+          if(contact.firstName.toLowerCase().indexOf(lPart) >= 0 || 
+              contact.lastName.toLowerCase().indexOf(lPart) >= 0 || 
+                contact.companyName.toLowerCase().indexOf(lPart) >= 0 ||
+                  contact.tags.filter(t => ts.get(t) ? ts.get(t).name.toLowerCase().indexOf(lPart) >= 0 : false).length > 0) {
+            matches = true;
+          }
+        });
+        if(matches) return contact;
+      });
+    }
+
+    onTagsTargetChange(target) {
+      this.tagsTargetButton = target.targetButton;
+      this.tagsTargetContact = target.contact;
+      this.setTargetListPosition();
+    }
+
+    onTagListClosed(contact) {
+      this.tagsTargetContact = null;
+      this.tagsTargetContact = null;
+    }
+
+    setTargetListPosition() {
+      if(this.tagsTargetContact && this.tagsTargetButton) {
+        let targetBtnRect = this.tagsTargetButton.elementRef.nativeElement.getBoundingClientRect();
+        this.tagListComponent.setPosition(targetBtnRect.bottom, targetBtnRect.left + targetBtnRect.width);
+      }
+    }
+
+    onTextChange(text) {
+      if(text)
+        this.searchContacts(text);
+      else{
+        this.matchedContacts = [];
+      }
+
+      this.tagsTargetContact = null;
+      if(this.matchedContacts.indexOf(this.selectedContact) < 0)
+        this.selectedContact = null;
+    }
+
+    onTagsChange(tags) {
+      this.data.tags = tags;
+    }
+
+    onContactSelected(contact) {
+      this.selectedContact = contact;
+    }
 }

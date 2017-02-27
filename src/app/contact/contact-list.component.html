@@ -1,0 +1,27 @@
+<ul class="contact-list mdl-list">
+  <li class="mdl-list__item mdl-list__item--two-line" 
+        *ngFor="let contact of contacts" 
+          [class.selected]="contact === selectedContact"
+            (click)="onContactClick(contact)">
+    <div class="contact-icon">
+        <i class="material-icons mdl-list__item-avatar">person</i>
+    </div>
+    <span class="mdl-list__item-primary-content">
+      <span>{{ contact.firstName }} {{ contact.lastName }}</span>
+      <span class="mdl-list__item-sub-title"> 
+        <span class="job-title"><b>{{ contact.jobTitle }}</b> at {{ contact.companyName }}</span>
+      </span>
+      <span class="mdl-list__item-sub-title">
+        <div class="chip" *ngFor="let tag of contact.tags">
+          {{ tagService.get(tag) ? tagService.get(tag).name : 'Missgng Tag: ' + tag}}
+        </div>
+      </span>
+    </span>
+    <span class="mdl-list__item-secondary-content">
+      <button #tagBtn mdl-button mdl-button-type="raised" [id]="'contact' + contact.id" class="mdl-list__item-secondary-action" (click)="onTagsClick(contact, tagBtn)">
+        <span>Tags</span>
+        <mdl-icon>add_circle_outline</mdl-icon>
+      </button>
+    </span>
+  </li>
+</ul>

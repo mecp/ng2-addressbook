@@ -1,0 +1,49 @@
+<div #tagListBox class="tag-list-box" [class.show]="target != undefined && target != null">
+    <ul class="mdl-list tag-list" [attr.for]="target ? 'contact' + target.id : undefined">
+        <li class="mdl-list__item" *ngFor="let tag of tags">
+            <span class="mdl-list__item-primary-content">
+                <mdl-checkbox [hidden]="editing && tag === tagBeingEdited" [ngModel]="target ? target.tags.indexOf(tag.id) >= 0 : false"
+                                (ngModelChange)="onTagTaggle($event, tag)">
+                    <span>{{ tag.name }}</span>
+                </mdl-checkbox>
+                <mdl-textfield
+                    [hidden]="!editing || tag !== tagBeingEdited"
+                    type="text"
+                    [(ngModel)]="editTagValue"
+                    placeHolder="Tag..."
+                    autofocus
+                    required
+                    (keyup.enter)="onTagEdit(tag)">
+                </mdl-textfield>
+            </span>
+            <span class="mdl-list__item-secondary-content">
+                <span>
+                    <button mdl-button mdl-button-type="icon" (click)="onTagEdit(tag)">
+                        <mdl-icon> {{ editing && tag === tagBeingEdited ? 'done' : 'mode_edit' }}</mdl-icon>
+                    </button>
+                    <button mdl-button mdl-button-type="icon" (click)="onTagRemove(tag)">
+                        <mdl-icon class="delete-btn">clear</mdl-icon>
+                    </button>
+                </span>
+            </span>
+        </li>
+    </ul>
+    <div class="taglist-footer-row">
+            <mdl-textfield
+                    type="text"
+                    [(ngModel)]="newTag"
+                    label="Add Tag..."
+                    autofocus
+                    (keyup.enter)="onTagEnter(newTag)"
+                    floating-label>
+                </mdl-textfield>
+                <button mdl-button mdl-button-type="icon" (click)="onTagEnter(newTag)">
+                        <mdl-icon>done</mdl-icon>
+                </button>
+    </div>
+    <div class="taglist-footer-row taglist-close-btn">
+        <button id="taglistCloseBtn" (click)="onClose()" mdl-button mdl-button-type="raised" mdl-colored="accent">
+            Close
+        </button>
+    </div>
+</div>

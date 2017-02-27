@@ -1,1 +1,145 @@
-/*styles for home content only*/
+.mdl-layout__content, .mdl-layout__header-row{
+    padding: 0 30px 0 30px;
+}
+
+.icons {
+    color: #AAA;
+}
+
+.notification-icon {
+    width: 50px;
+    height: 50px;
+}
+
+.mdl-textfield__input {
+    color: #000;
+}
+
+.mdl-menu__container {
+    right: 100px;
+}
+
+.contact-list .mdl-list__item {
+    min-height: 100px;
+    -webkit-align-items: inherit;
+    -ms-flex-align: inherit;
+    align-items: inherit;
+}
+
+.mdl-button--raised {
+    min-width: 100px;
+}
+
+.searchbox { max-width: 50vw; width: 50vw; }
+
+@media screen and (max-width: 750px) {
+  .contact-list { max-height: 40vh; }
+  .mdl-layout__content { padding: 0 5px 0 5px; }
+  .contact-icon { display: none; }
+}
+
+@media screen and (min-width: 750px) {
+  .contact-list { max-height: 85vh; }
+}
+
+.contact-list {
+    overflow:hidden; 
+    overflow-y:scroll;
+}
+
+span.job-title {
+    display: block;
+}
+
+.contact-list .mdl-list__item:hover {
+    background-color: #CBE1FF;
+}
+
+.contact-list .mdl-list__item.selected {
+    background-color: #E0EFFF;
+}
+
+div.contact-icon {
+    height: 100%;
+    margin-right: 10px; 
+}
+
+table.contact-info {
+    margin-top: 22px;
+    width: 100%;
+    border: none;
+    font-size: 16px;
+}
+
+.contact-info-label {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0 0 0.5em 0;
+    color: #555;
+}
+
+
+.contact-info-text {
+    color: #4f6fad;
+}
+
+.chip {
+    display: inline-block;
+    padding: 0 10px;
+    font-size: 14px;
+    line-height: 30px;
+    border-radius: 5px;
+    margin: 10px 10px 5px 0;
+}
+
+.tag-list-box {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 999;
+    margin-bottom: 20px;
+}
+
+.tag-list { 
+    padding: 0; 
+    margin-top: 0; 
+    margin-bottom: 0; 
+}
+
+.delete-btn {
+    color: #FF5B59;
+}
+
+.taglist-footer-row {
+    padding: 0;
+    display: flex;
+    margin: auto;
+    width: 90%;
+    align-items: center;
+}
+
+.taglist-close-btn {
+    padding-bottom: 10px;
+}
+
+.taglist-close-btn button{
+    margin: auto;
+}
+
+.taglist-footer-row.mdl-textfield {
+    padding-bottom: 0;
+}
+
+.unread,
+.chip,
+.mdl-button,
+.tag-list .mdl-list__item:hover { 
+    background-color: #f1f1f1 
+}
+
+.mdl-button:hover {
+    background-color: #E3E3E3
+}
+
+.show { display:block; }

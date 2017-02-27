@@ -3,6 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content="Angular 2 Webpack AddressBook App">
+  <meta name="keywords" content="Angular 2,AOT">
+  <meta name="author" content="Chandraprakash Sharma">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title><%= htmlWebpackPlugin.options.title %></title>
@@ -14,28 +17,23 @@
   <%= webpackConfig.htmlElements.headTags %>
   <% } %>
 
+  <link rel="stylesheet" href="assets/vendor/mdl/material.teal-red.min.css" />
+  <link href="assets/vendor/mdl/material-icons.css" rel="stylesheet">
+  <script src="assets/vendor/pubnub/pubnub.min.js"></script>
+
   <!-- base url -->
   <base href="<%= htmlWebpackPlugin.options.metadata.baseUrl %>">
-
 
 </head>
 
 <body>
 
   <app>
-    Loading...
+    <center style="margin-top:25%;color:#696969;">
+        <i class="material-icons">send</i>
+        <h4>Loading...</h4>
+    </center>
   </app>
-
-  <!-- Google Analytics: change UA-71073175-1 to be your site's ID -->
-  <script>
-    (function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=r;A[l]=A[l]||function(){
-    (A[l].q=A[l].q||[]).push(arguments)},A[l].l=1*new Date();a=n.createElement(g),
-    r=n.getElementsByTagName(g)[0];a.async=1;a.src=u;r.parentNode.insertBefore(a,r)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-71073175-1', 'auto');
-    ga('send', 'pageview');
-  </script>
 
   <% if (htmlWebpackPlugin.options.metadata.isDevServer && htmlWebpackPlugin.options.metadata.HMR !== true) { %>
   <!-- Webpack Dev Server reload -->

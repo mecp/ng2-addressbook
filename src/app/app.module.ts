@@ -15,6 +15,9 @@ import {
   PreloadAllModules
 } from '@angular/router';
 
+import { MdlModule } from 'angular2-mdl';
+import { SharedModule } from './shared/shared.module';
+
 /*
  * Platform and Environment providers/directives/pipes
  */
@@ -24,18 +27,27 @@ import { ROUTES } from './app.routes';
 import { AppComponent } from './app.component';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
-import { HomeComponent } from './home';
-import { AboutComponent } from './about';
+import { CacheService } from './shared/cache.service'
 import { NoContentComponent } from './no-content';
-import { XLargeDirective } from './home/x-large';
 
-import '../styles/styles.scss';
-import '../styles/headings.css';
+import { XLargeDirective } from './home/x-large.directive';
+import { HomeComponent } from './home/home.component';
+import { ContactInfoComponent } from './contact/contact-info.component';
+import { ContactListComponent } from './contact/contact-list.component';
+import { TagListComponent } from './home/tag-list.component';
+import { PubNubAngular } from 'pubnub-angular2';
+
+export function getLRU() {
+  return new Map();
+}
 
 // Application wide providers
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
-  AppState
+  AppState,
+  CacheService,
+  PubNubAngular,
+  { provide: 'LRU', useFactory: getLRU, deps: [] }
 ];
 
 type StoreType = {
@@ -51,16 +63,19 @@ type StoreType = {
   bootstrap: [ AppComponent ],
   declarations: [
     AppComponent,
-    AboutComponent,
     HomeComponent,
+    ContactInfoComponent,
+    ContactListComponent,
+    TagListComponent,
     NoContentComponent,
     XLargeDirective
   ],
   imports: [ // import Angular's modules
+    SharedModule.forRoot(),
     BrowserModule,
-    FormsModule,
     HttpModule,
-    RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules })
+    RouterModule.forRoot(ROUTES),
+    MdlModule
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,

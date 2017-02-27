@@ -1,0 +1,45 @@
+<h3 class="contact-info-text" *ngIf="contact">{{ contact.firstName + ' ' + contact.lastName }}</h3>
+<table class="contact-info mdl-data-table mdl-js-data-table mdl-data-table--selectable" *ngIf="contact">
+  <tbody>
+    <!--<tr>
+      <td class="mdl-data-table__cell--non-numeric contact-info-label"><span>Name</span></td>
+      <td class="contact-info-text">{{ contact.firstName + ' ' + contact.lastName }}</td>
+    </tr>-->
+    <tr>
+      <td class="mdl-data-table__cell--non-numeric contact-info-label"><span>Email</span></td>
+      <td class="contact-info-text">{{ contact.email }}</td>
+    </tr>
+    <tr>
+      <td class="mdl-data-table__cell--non-numeric contact-info-label"><span>Gender</span></td>
+      <td class="contact-info-text">{{ contact.gender }}</td>
+    </tr>
+    <tr>
+      <td class="mdl-data-table__cell--non-numeric contact-info-label"><span>Job Title</span></td>
+      <td class="contact-info-text">{{ contact.jobTitle }}</td>
+    </tr>
+    <tr>
+      <td class="mdl-data-table__cell--non-numeric contact-info-label"><span>Company</span></td>
+      <td class="contact-info-text">{{ contact.companyName }}</td>
+    </tr>
+    <tr>
+      <td class="mdl-data-table__cell--non-numeric contact-info-label"><span>Tags</span></td>
+      <td class="contact-info-text">
+        <div class="chip" *ngFor="let tag of contact.tags">
+            {{ tagService.get(tag) ? tagService.get(tag).name : 'Missgng Tag: ' + tag}}
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="mdl-data-table__cell--non-numeric contact-info-label"><span>Phone</span></td>
+      <td class="contact-info-text">{{ contact.phone }}</td>
+    </tr>
+    <tr>
+      <td class="mdl-data-table__cell--non-numeric contact-info-label"><span>Skype</span></td>
+      <td class="contact-info-text">{{ contact.skype }}</td>
+    </tr>
+    <tr>
+      <td class="mdl-data-table__cell--non-numeric contact-info-label"><span>Linkedin</span></td>
+      <td  class="contact-info-text"><a [href]="contact.linkedin">{{ contact.linkedin }}</a></td>
+    </tr>
+  </tbody>
+</table>
