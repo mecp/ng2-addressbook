@@ -10,6 +10,10 @@ To be able to use Pubnub you will need to put your own publish and subscribe key
   private subscribeKey = '';
 ```
 
+### Demo
+---
+App is deployed here for demo ⇢ [**ng2-addressbook**](https://www.chandraprakash.in/playground/ng2-addressbook)
+
 ### Quick start
 **Make sure you have Node version >= 5.0 and NPM >= 3**
 > Clone/Download the repo then edit `app.component.ts` inside [`/src/app/app.component.ts`](/src/app/app.component.ts)
