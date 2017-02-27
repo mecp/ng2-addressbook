@@ -1,5 +1,5 @@
 import { Component, Renderer, ViewEncapsulation, 
-          ViewChild, HostListener, AfterViewChecked } from '@angular/core';
+          ViewChild, HostListener } from '@angular/core';
 
 import { ModelService } from '../shared/model.service';
 import { Contact } from '../shared/model/contact.model';
@@ -14,7 +14,7 @@ import { NotificationService } from '../shared/notification.service';
   templateUrl: './home.component.html',
   providers: [ TagService, NotificationService ]
 })
-export class HomeComponent implements AfterViewChecked {
+export class HomeComponent {
     public searchText;
     public notifications = []
     public data:any = {};
@@ -37,12 +37,11 @@ export class HomeComponent implements AfterViewChecked {
       this.model.get('/data.json').subscribe(data => {
         this.data = data;
         this.tagService.initialize(this.data.tags);
-      });
-    }
 
-    ngAfterViewChecked(){
-      this.searchText = 'chris';
-      this.searchContacts(this.searchText);
+        //At the beginning to not have empty page
+        this.searchText = 'chris';
+        this.searchContacts(this.searchText);
+      });
     }
 
     unreadNotificationCount(){
