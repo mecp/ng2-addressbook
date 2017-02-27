@@ -10,7 +10,7 @@
                 [(ngModel)]="searchText"
                 placeholder="Search by Name, Company or Tag..."
                 autofocus
-                (ngModelChange)="onTextChange($event)">
+                (ngModelChange)="onTextChange($event)" floating-label>
             </mdl-textfield>
             <button mdl-button #searchBtn="mdlButton" mdl-button-type="icon">
                 <mdl-icon class="icons">search</mdl-icon>
