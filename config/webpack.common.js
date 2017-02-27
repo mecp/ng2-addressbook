@@ -27,7 +27,7 @@ const ngcWebpack = require('ngc-webpack');
 const HMR = helpers.hasProcessFlag('hot');
 const AOT = helpers.hasNpmFlag('aot');
 const METADATA = {
-  title: 'Angular2 Based Address Book Example for Daniel',
+  title: 'Angular2 Based Address Book Example',
   baseUrl: '/',
   isDevServer: helpers.isWebpackDevServer()
 };
