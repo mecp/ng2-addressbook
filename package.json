@@ -89,8 +89,8 @@
     "rxjs": "5.0.2",
     "zone.js": "~0.8.5",
     "angular2-mdl": "^2.13.1",
-    "pubnub": "^4.4.4",
-    "pubnub-angular2": "^1.0.0"
+    "pubnub": "^4.10.0",
+    "pubnub-angular2": "^1.0.2"
   },
   "devDependencies": {
     "@angular/compiler-cli": "~4.0.3",
