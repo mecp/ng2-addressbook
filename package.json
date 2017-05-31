@@ -1,7 +1,7 @@
 {
-  "name": "ng2-addressbook",
+  "name": "ngx-addressbook",
   "version": "5.4.1",
-  "description": "An example Address Book app built upon Angular 2 Webpack Starter kit featuring Angular 2 (Router, Http, Forms, Services, Tests, E2E, Coverage), Karma, Protractor, Jasmine, Istanbul, TypeScript, and Webpack by AngularClass",
+  "description": "An example Address Book app built upon Angular 4 Webpack Starter kit featuring Angular 4 (Router, Http, Forms, Services, Tests, E2E, Coverage), Karma, Protractor, Jasmine, Istanbul, TypeScript, and Webpack by AngularClass",
   "keywords": [
     "angular",
     "angular2",
@@ -9,7 +9,7 @@
     "typescript"
   ],
   "author": "Chandraprakash Sharma <cp@chandraprakash.in>",
-  "homepage": "https://github.com/mecp/ng2-addressbook",
+  "homepage": "https://github.com/mecp/ngx-addressbook",
   "license": "MIT",
   "scripts": {
     "build:aot:prod": "npm run clean:dist && npm run clean:aot && cross-env BUILD_AOT=1 npm run webpack -- --config config/webpack.prod.js  --progress --profile --bail",
@@ -159,10 +159,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/mecp/ng2-addressbook.git"
+    "url": "https://github.com/mecp/ngx-addressbook.git"
   },
   "bugs": {
-    "url": "https://github.com/mecp/ng2-addressbook/issues"
+    "url": "https://github.com/mecp/ngx-addressbook/issues"
   },
   "engines": {
     "node": ">= 4.2.1",

@@ -1,6 +1,6 @@
 # Introduction
 
-An example Address Book project built with Angular 2, Typescript and Webpack. It also uses [**Pubnub**](https://www.pubnub.com/) for sending and receivig notifications when a new tag is added. 
+An example Address Book project built with Angular 4, Typescript and Webpack. It also uses [**Pubnub**](https://www.pubnub.com/) for sending and receivig notifications when a new tag is added. 
 
 To be able to use Pubnub you will need to put your own publish and subscribe key obtained from **Pubnub Dashboard**, otherwise it will push the notification locally. Once you have obtained the keys please put them inside [`notification.service.ts`](/src/app/shared/notification.service.ts).
 
@@ -12,7 +12,7 @@ To be able to use Pubnub you will need to put your own publish and subscribe key
 
 ### Demo
 ---
-App is deployed here for demo ⇢ [**ng2-addressbook**](https://www.chandraprakash.in/playground/ng2-addressbook)
+App is deployed here for demo ⇢ [**ngx-addressbook**](https://www.chandraprakash.in/playground/ngx-addressbook)
 
 ### Quick start
 **Make sure you have Node version >= 6.0 and NPM >= 3**
@@ -21,10 +21,10 @@ App is deployed here for demo ⇢ [**ng2-addressbook**](https://www.chandrapraka
 ```bash
 # clone our repo
 # --depth 1 removes all but one .git commit history
-git clone --depth 1 https://github.com/mecp/ng2-addressbook.git
+git clone --depth 1 https://github.com/mecp/ngx-addressbook.git
 
 # change directory to our repo
-cd ng2-addressbook
+cd ngx-addressbook
 
 # install the repo with npm
 npm install
@@ -172,12 +172,12 @@ The following are some things that will make AoT compile fail.
 You can quickly create a free site to get started using this
 starter kit in production on [Netlify](https://www.netlify.com/):
 
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/mecp/ng2-addressbook)
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/mecp/ngx-addressbook)
 
 ## Project is built on [Angular2 Webpack Starter](https://github.com/angularclass/angular2-webpack-starter)
 ---
 
-> An Angular 2 starter kit featuring [Angular 2](https://angular.io) and [Angular 4](https://github.com/angular/angular/tree/4.0.0-beta.0) ([Ahead of Time Compile](https://angular.io/docs/ts/latest/cookbook/aot-compiler.html), [Router](https://angular.io/docs/ts/latest/guide/router.html), [Forms](https://angular.io/docs/ts/latest/guide/forms.html),
+> An Angular 4 starter kit featuring [Angular 4](https://angular.io) and [Angular 4](https://github.com/angular/angular/tree/4.0.0-beta.0) ([Ahead of Time Compile](https://angular.io/docs/ts/latest/cookbook/aot-compiler.html), [Router](https://angular.io/docs/ts/latest/guide/router.html), [Forms](https://angular.io/docs/ts/latest/guide/forms.html),
 [Http](https://angular.io/docs/ts/latest/guide/server-communication.html),
 [Services](https://gist.github.com/gdi2290/634101fec1671ee12b3e#_follow_@AngularClass_on_twitter),
 [Tests](https://angular.io/docs/ts/latest/guide/testing.html), [E2E](https://angular.github.io/protractor/#/faq#what-s-the-difference-between-karma-and-protractor-when-do-i-use-which-)), [Karma](https://karma-runner.github.io/), [Protractor](https://angular.github.io/protractor/), [Jasmine](https://github.com/jasmine/jasmine), [Istanbul](https://github.com/gotwarlost/istanbul), [TypeScript](http://www.typescriptlang.org/), [@types](https://www.npmjs.com/~types), [TsLint](http://palantir.github.io/tslint/), [Codelyzer](https://github.com/mgechev/codelyzer), [Hot Module Replacement](https://webpack.github.io/docs/hot-module-replacement-with-webpack.html), and [Webpack 2](http://webpack.github.io/) by [AngularClass](https://angularclass.com).

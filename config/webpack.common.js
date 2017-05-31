@@ -102,7 +102,7 @@ module.exports = function (options) {
          * Typescript loader support for .ts
          *
          * Component Template/Style integration using `angular2-template-loader`
-         * Angular 2 lazy loading (async routes) via `ng-router-loader`
+         * Angular 4 lazy loading (async routes) via `ng-router-loader`
          *
          * `ng-router-loader` expects vanilla JavaScript code, not TypeScript code. This is why the
          * order of the loader matter.
