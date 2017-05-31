@@ -26,30 +26,32 @@ export class HomeComponent {
     @ViewChild('tagListComponent')
     public tagListComponent: TagListComponent;
 
-    constructor(public model: ModelService, public tagService: TagService, public renderer: Renderer, public notificationService: NotificationService) {
+    constructor(public model: ModelService,
+                public tagService: TagService, public renderer: Renderer,
+                public notificationService: NotificationService) {
       this.notificationService.subscribe((notification) => {
-            if(this.notifications.length == 10){ //Show latest 10 notifications only
+            if (this.notifications.length === 10) { // Show latest 10 notifications only
               this.notifications.shift();
             }
             this.notifications.push({ message: notification.message, read: false});
         });
 
-      this.model.get('/data.json').subscribe(data => {
+      this.model.get('/data.json').subscribe((data) => {
         this.data = data;
         this.tagService.initialize(this.data.tags);
 
-        //At the beginning to not have empty page
+        // At the beginning to not have empty page
         this.searchText = 'chris';
         this.searchContacts(this.searchText);
       });
     }
 
-    unreadNotificationCount(){
-      return this.notifications.filter(notice => notice.read == false).length;
+    public unreadNotificationCount() {
+      return this.notifications.filter((notice) => notice.read === false).length;
     }
 
     @HostListener("window:resize", ["$event"])
-    onResize(event){
+    public onResize(event) {
       this.setTargetListPosition();
     }
 

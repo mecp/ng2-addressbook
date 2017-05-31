@@ -15,7 +15,7 @@ To be able to use Pubnub you will need to put your own publish and subscribe key
 App is deployed here for demo ⇢ [**ng2-addressbook**](https://www.chandraprakash.in/playground/ng2-addressbook)
 
 ### Quick start
-**Make sure you have Node version >= 5.0 and NPM >= 3**
+**Make sure you have Node version >= 6.0 and NPM >= 3**
 > Clone/Download the repo then edit `app.component.ts` inside [`/src/app/app.component.ts`](/src/app/app.component.ts)
 
 ```bash
@@ -58,7 +58,7 @@ We use the component approach in our starter. This is the new standard for devel
 angular2-webpack-starter/
  ├──config/                        * our configuration
  |   ├──helpers.js                 * helper functions for our configuration files
- |   ├──spec-bundle.js             * ignore this magic that sets up our angular 2 testing environment
+ |   ├──spec-bundle.js             * ignore this magic that sets up our Angular testing environment
  |   ├──karma.conf.js              * karma config for our unit tests
  |   ├──protractor.conf.js         * protractor config for our end-to-end tests
  │   ├──webpack.dev.js             * our development webpack config
@@ -90,7 +90,7 @@ angular2-webpack-starter/
 ## Dependencies
 What you need to run this app:
 * `node` and `npm` (`brew install node`)
-* Ensure you're running the latest versions Node `v4.x.x`+ (or `v5.x.x`) and NPM `3.x.x`+
+* Ensure you're running the latest versions Node `v6.x.x`+ (or `v7.x.x`) and NPM `3.x.x`+
 
 > If you have `nvm` installed, which is highly recommended (`brew install nvm`) you can do a `nvm install --lts && nvm use` in `$` to run with the latest Node LTS. You can also have this `zsh` done for you [automatically](https://github.com/creationix/nvm#calling-nvm-use-automatically-in-a-directory-with-a-nvmrc-file) 
 
