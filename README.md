@@ -174,7 +174,7 @@ starter kit in production on [Netlify](https://www.netlify.com/):
 
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/mecp/ngx-addressbook)
 
-## Project is built on [Angular2 Webpack Starter](https://github.com/angularclass/angular2-webpack-starter)
+## Project is built on [Angular Starter](https://github.com/AngularClass/angular-starter)
 ---
 
 > An Angular 4 starter kit featuring [Angular 4](https://angular.io) and [Angular 4](https://github.com/angular/angular/tree/4.0.0-beta.0) ([Ahead of Time Compile](https://angular.io/docs/ts/latest/cookbook/aot-compiler.html), [Router](https://angular.io/docs/ts/latest/guide/router.html), [Forms](https://angular.io/docs/ts/latest/guide/forms.html),
